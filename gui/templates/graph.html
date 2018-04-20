@@ -1,0 +1,14 @@
+{% extends 'admin-base.html' %}
+
+{% block content %}           
+<h3><b>Pictorial representations: </b></h3><br>
+<html>
+<div class="row" style="width:100%; padding: 0px; margin: 0px;">
+    <div class="col-md-4" style="width:100%; padding: 0px 0px 0px 0px; margin: 0px;">
+        <div class="card" style="padding: 0px 0px 0px 0px; margin: 0px; box-sizing: content-box; display:block;">                                                 
+            <img id="img" src="{% url 'gui:graph' %}" style="padding: 0px 0px 0px 0px; margin: 0px; display:block; border:0; box-sizing: content-box; height: 800px">
+        </div>
+    </div>
+                <!-- <div class="row"> -->
+</div>
+{% endblock %}

@@ -1,0 +1,160 @@
+{% extends 'admin-base.html' %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}Prediction{% endblock %}
+{% block disclaimer %}
+{% endblock %}
+{% block content %}
+
+
+<doctype html>
+<html lang="en">
+    <meta charset="utf-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<head>
+<style type="text/css">
+
+  .accordion {
+    background-color: #0000FF;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active1, .accordion:hover {
+    background-color: #58D3F7;
+}
+/* Style the accordion panel. Note: hidden by default */
+.accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+.active1:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+    }
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+
+}
+.result {
+    background-color: #0000FF;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+</style>
+ </head>
+
+
+
+
+        <div class="container ">
+          <h2 style="text-align:center;">Prediction of Diabetes for Females</h2><br><br>
+          <div class="row">
+        <div class="col-sm-4">
+      
+          <form method="post">
+            {% csrf_token %}
+
+           <!-- # {{ form1 | crispy }} -->
+           {% csrf_token %}
+
+           <!-- start -->
+         
+          
+
+           </div>
+           </div>
+
+<div class="row">
+        <div class="col-sm-11">
+<button class="accordion">Clinical Factors</button>
+<div class="panel">
+  <div class="row">
+        <div class="col-sm-5">
+            
+  {{ form1.glucose | as_crispy_field }}
+  {{ form1.insulin | as_crispy_field }}
+  {{ form1.blood_pressure | as_crispy_field }}
+  {{ form1.skin_thickness | as_crispy_field }} 
+  </div>
+  </div>     
+</div>
+<button class="accordion">Personal Factors</button>
+<div class="panel">
+<div class="row">
+        <div class="col-sm-5">
+            {{ form1.pregnancies | as_crispy_field }}
+            {{ form1.bmi | as_crispy_field }}
+            {{ form1.age | as_crispy_field }}
+  </div>
+  </div>                  
+</div>
+<button class="accordion">Ancestor's History</button>
+<div class="panel">
+<div class="row">
+        <div class="col-sm-5">
+            {{ form1.diabetes_pedigree_function | as_crispy_field }}
+  </div>
+  </div>       
+</div>
+
+
+
+            
+          
+          </div>
+          </div>
+        </div>
+        
+        <div class="container">
+        
+        
+        <h4> Results : {{ pred }} </h4>
+      
+            <button type="submit" class="result">Result</button>
+            
+        </form>
+          
+    
+        </div>
+
+<!-- * -->
+
+  <script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active1");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+{% endblock %}
+</html>

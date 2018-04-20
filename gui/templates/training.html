@@ -1,0 +1,53 @@
+{% extends 'admin-base.html' %}
+{% block title %}Upload{% endblock %}
+{% load crispy_forms_tags %}
+{% block disclaimer %}
+{% endblock %}
+{% block content %}
+
+<style type="text/css">
+.result {
+    background-color: #0000FF;
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+</style>
+<doctype html>
+<html lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    
+        <h2 align="center"> Training and testing </h2><br><br>
+        <div class="container " style="margin:auto; width:40%; border: 3px solid #0000FF"  >
+        <div class="row" style="margin:auto; width:50%;">
+        <div class="col-sm-5" style="margin:auto; width:100%;">
+            <form method="post" enctype="multipart/form-data" action="#">
+                {% csrf_token %}
+                <br>
+                {{ form2.document }}
+          
+                <br><br><button type="submit" class="result">Train and test</button>
+                <!-- <button type="submit" class="result"></button> -->
+                <br><br>
+        
+                <h4>Accuracy:{{ accuracy }}</h4>
+                <!-- {{ pred1 }} -->
+                <br>
+                <br>
+              </form>
+
+          </div>
+          </div>
+        </div>
+      
+    
+
+{% endblock %}
